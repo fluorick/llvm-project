@@ -5311,6 +5311,10 @@ static llvm::Function *emitOutlinedOrderedFunction(CodeGenModule &CGM,
   return Fn;
 }
 
+void CodeGenFunction::EmitOMPMetadirective(const OMPMetadirective &S) {
+
+}
+
 void CodeGenFunction::EmitOMPOrderedDirective(const OMPOrderedDirective &S) {
   if (S.hasClausesOfKind<OMPDependClause>()) {
     assert(!S.hasAssociatedStmt() &&

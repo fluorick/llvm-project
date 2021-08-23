@@ -2749,6 +2749,34 @@ public:
   }
 };
 
+class OMPMetadirective final : public OMPExecutableDirective {
+  friend class ASTStmtReader;
+
+  OMPMetadirective(SourceLocation StartLoc, SourceLocation EndLoc,
+                     unsigned NumClauses)
+      : OMPExecutableDirective(this, OMPMetadirectiveClass,
+                               llvm::omp::OMPD_meta, StartLoc, EndLoc,
+                               NumClauses, 0) {}
+
+  explicit OMPMetadirective(unsigned NumClauses)
+      : OMPExecutableDirective(this, OMPMetadirectiveClass,
+                               llvm::omp::OMPD_meta, SourceLocation(),
+                               SourceLocation(), NumClauses, 0) {}
+
+public:
+  static OMPMetadirective *Create(const ASTContext &C,
+                                    SourceLocation StartLoc,
+                                    SourceLocation EndLoc,
+                                    ArrayRef<OMPClause *> Clauses);
+
+  static OMPMetadirective *CreateEmpty(const ASTContext &C,
+                                         unsigned NumClauses, EmptyShell);
+
+  static bool classof(const Stmt *T) {
+    return T->getStmtClass() == OMPMetadirectiveClass;
+  }
+};
+
 /// This represents '#pragma omp atomic' directive.
 ///
 /// \code

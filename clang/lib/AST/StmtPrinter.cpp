@@ -782,6 +782,11 @@ void StmtPrinter::VisitOMPOrderedDirective(OMPOrderedDirective *Node) {
   PrintOMPExecutableDirective(Node, Node->hasClausesOfKind<OMPDependClause>());
 }
 
+void StmtPrinter::VisitOMPMetadirective(OMPMetadirective *Node) {
+  Indent() << "#pragma omp metadirective";
+  PrintOMPExecutableDirective(Node);
+}
+
 void StmtPrinter::VisitOMPAtomicDirective(OMPAtomicDirective *Node) {
   Indent() << "#pragma omp atomic";
   PrintOMPExecutableDirective(Node);

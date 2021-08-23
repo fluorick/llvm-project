@@ -10694,6 +10694,11 @@ public:
   StmtResult ActOnOpenMPOrderedDirective(ArrayRef<OMPClause *> Clauses,
                                          Stmt *AStmt, SourceLocation StartLoc,
                                          SourceLocation EndLoc);
+    
+    StmtResult ActOnOpenMPMetadirective(ArrayRef<OMPClause *> Clauses,
+                                          SourceLocation StartLoc,
+                                          SourceLocation EndLoc);
+    
   /// Called on well-formed '\#pragma omp atomic' after parsing of the
   /// associated statement.
   StmtResult ActOnOpenMPAtomicDirective(ArrayRef<OMPClause *> Clauses,

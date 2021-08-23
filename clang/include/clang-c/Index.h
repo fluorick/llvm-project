@@ -2593,7 +2593,12 @@ enum CXCursorKind {
   CXCursor_OMPUnrollDirective = 293,
 
   CXCursor_LastStmt = CXCursor_OMPUnrollDirective,
+  
+  /** OpenMP  metadirective.
+  */
+  CXCursor_OMPMetadirective = 288,
 
+  CXCursor_LastStmt = CXCursor_OMPMetadirective,
   /**
    * Cursor that represents the translation unit itself.
    *
