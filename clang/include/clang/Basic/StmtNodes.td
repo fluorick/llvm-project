@@ -245,6 +245,7 @@ def OMPFlushDirective : StmtNode<OMPExecutableDirective>;
 def OMPDepobjDirective : StmtNode<OMPExecutableDirective>;
 def OMPScanDirective : StmtNode<OMPExecutableDirective>;
 def OMPOrderedDirective : StmtNode<OMPExecutableDirective>;
+def OMPMetadirective : StmtNode<OMPExecutableDirective>;
 def OMPAtomicDirective : StmtNode<OMPExecutableDirective>;
 def OMPTargetDirective : StmtNode<OMPExecutableDirective>;
 def OMPTargetDataDirective : StmtNode<OMPExecutableDirective>;

@@ -2222,6 +2222,7 @@ Parser::DeclGroupPtrTy Parser::ParseOpenMPDeclarativeDirectiveWithExtDecl(
   case OMPD_target_teams_distribute_simd:
   case OMPD_dispatch:
   case OMPD_masked:
+  case OMPD_metadirective:
     Diag(Tok, diag::err_omp_unexpected_directive)
         << 1 << getOpenMPDirectiveName(DKind);
     break;
@@ -2295,6 +2296,13 @@ Parser::ParseOpenMPDeclarativeOrExecutableDirective(ParsedStmtContext StmtCtx) {
   bool HasAssociatedStatement = true;
 
   switch (DKind) {
+  case OMPD_metadirective: {
+    ConsumeToken();
+    ConsumeAnnotationToken();
+    Actions.ActOnOpenMPExecutableDirective(DKind, DirName, CancelRegion, Clauses, nullptr, Loc, EndLoc);
+  }
+  break;
+          
   case OMPD_threadprivate: {
     // FIXME: Should this be permitted in C++?
     if ((StmtCtx & ParsedStmtContext::AllowDeclarationsInC) ==

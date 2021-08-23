@@ -1674,6 +1674,9 @@ def OMP_EndWorkshare : Directive<"end workshare"> {
     VersionedClause<OMPC_NoWait>
   ];
 }
+def OMP_metadirective : Directive<"metadirective"> {
+  let isDefault = 1;
+}
 def OMP_interop : Directive<"interop"> {
   let allowedClauses = [
     VersionedClause<OMPC_Device>,
